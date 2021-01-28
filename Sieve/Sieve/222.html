@@ -1,0 +1,82 @@
+<html>
+    <meta chartset=UTF-8 />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> 
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="..\node_modules\dist\plotly.min.js"></script>
+    <div id="chart"></div>
+<script type="text/javascript">
+//app.use(cors());
+function getData(){
+    return Math.random();
+}
+
+Plotly.plot('chart',[{
+    y:[getData()],
+    type:'line'
+}]);
+var cnt=0;
+
+setInterval(() => {
+    Plotly.extendTraces('chart',{y:[[getData()]]}, [0]);
+    cnt++;
+     if(cnt> 100)
+     {
+         Plotly.relayout('chart',{
+             xaxis:{
+                 range: [cnt-100, cnt]
+             }
+         });
+     }
+}, 10);
+
+</script>
+
+<!-- <script type="text/javascript">
+    print(222)
+    google.load('visualization', '1', {packages: ['corechart'],'language':'ko'});
+   
+    function drawVisualization(dataFromAjax) {
+         var data = google.visualization.arrayToDataTable(dataFromAjax);
+
+         new google.visualization.ColumnChart(document.getElementById('map')).
+         draw(data, {fontName: "맑은 고딕, Malgon Gothic",
+                fontSize: 11,
+                forceIFrame: false,
+                vAxis: {maxValue: 100}}
+           );
+    }
+
+    function drawInit()
+    {
+         var data = null;
+         var table_data = null;
+
+
+         $.ajax({
+             url:'data.jsp',
+             data: {},
+             success: function(res) {
+                 table_data = eval("(" + res + ")");
+                 drawVisualization(table_data);
+             }
+        });
+    }
+   
+    google.setOnLoadCallback(drawInit);
+ 
+    setInterval(function() { drawInit(); }, 3000);
+</script> -->
+   
+ 
+    
+        <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/_zsw4brbv18" frameborder="0" allow="accelerometer; autoplay; encrypted-meda; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+    
+
+     <!-- <div class="navbar"><span> Real-time chart with Ploty.js</span> </div> -->
+     <!-- <div class="wrapper"> -->
+         <!-- <div id="chart"></div> -->
+      
+     <!-- </div> -->
+    
+</html>
