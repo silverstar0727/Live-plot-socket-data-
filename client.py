@@ -32,31 +32,3 @@ if __name__ == '__main__':
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-'''
-
-        i = 0
-        while True:
-            read_data('Sieve\\Sieve\\2d_int_int.txt')
-
-            try:
-                print(data)
-                data = pickle.dumps(data[i])
-                sock.send(data)
-
-            except:
-                sock.close()
-                break
-            i += 1
-'''
